@@ -40,9 +40,9 @@ section h2{
   box-shadow: 0 0 12px rgba(60, 92, 73, 0.15);
   z-index: 9999999999;
   opacity: 0;
-  visibility: visible;
   transform: translateY(-10px); 
   transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: visible;
   pointer-events: none;
 }
 
@@ -94,7 +94,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 50px;
+  padding: 14px 30px;
   transition: transform 0.3s ease;
   z-index: 99999;
   background: rgba(255, 255, 255, 0.7);
@@ -115,7 +115,7 @@ header.hide {
 
 /* 로고 스타일 */
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -142,7 +142,7 @@ header.hide {
     background: none;
     border: none;
     font-size: 30px;
-    color: #333;
+    color: var(--p-color);
     cursor: pointer;
 }
 
@@ -234,9 +234,9 @@ header.hide {
 
 /* 자기 소개 섹션 */
 #introduce{
+    margin: 50px 3%;
     text-align: left;
     line-height: 1.7;
-    height: 100%;
     padding-top: 100px;
     box-sizing: border-box;
 }
@@ -341,7 +341,7 @@ p.introduce-scripts{
     font-size: 20px;
 }
 
-.info-area .info-title h1{
+.info-area h1{
     font-size: 36px;
     font-weight: 700;
     color: var(--h1-color);
@@ -386,8 +386,7 @@ p.introduce-scripts{
 
 /* 작업물 섹션 */
 #projects {
-    padding: 50px 20px;
-    height: 115%;
+    margin: 50px 3%;
     box-sizing: border-box;
 }
 
@@ -409,7 +408,6 @@ p.introduce-scripts{
 }
 
 .project-contents{
-    margin-bottom: 40px;
     color: var(--p-color);
 }
 
@@ -417,7 +415,31 @@ p.introduce-scripts{
 .accordion-header{
     cursor: pointer;
     position: relative;
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    transition: color 0.5s;
+    padding: 35px 0;
 }
+
+.accordion-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(230, 247, 204, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.5s ease;
+}
+
+
+.accordion-header:hover:before {
+  transform: scaleX(1);
+}
+
 
 .accordion-header h3{
     font-size: 36px;
@@ -430,7 +452,6 @@ p.introduce-scripts{
     width: 100%;
     height: 1px;
     background: var(--span-color);
-    margin: 25px 0;
 }
 
 .contents-sub-script{
@@ -448,102 +469,152 @@ p.introduce-scripts{
   max-height: 1000px; 
 }
 
-.accordion-btn{
-    position: absolute;
-    top: 45px;
-    right: 55px;
-    background: var(--p-color);
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-}
-
-.accordion-btn i {
-    color: #ffffff;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.project-contents:nth-of-type(2) .accordion-btn {
-  background-color: #5a9947; 
-}
-
-.project-contents:nth-of-type(3) .accordion-btn {
-  background-color: #6BA959; 
-}
-
-.project-contents:nth-of-type(4) .accordion-btn {
-  background-color: #82CE6B; 
-}
-
-.project-contents:nth-of-type(5) .accordion-btn {
-  background-color: #AFE481; 
-}
 
 /* 갤러리 그리드 설정 */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 1행 3열 (최소 200px, 최대 1fr) */
     gap: 15px;
-    margin: 15px auto;
+    margin: 15px 5px;
 }
 
 .gallery-item{
+    background: #ffffff;
     position: relative;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .gallery-item a{
     display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    border-radius: 10px 10px 0 0 ;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-    color: inherit; /* 텍스트 링크 색상 상속 */
-    text-decoration: none; /* 밑줄 제거 */
+    padding: 10px;
+    color: inherit; 
+    text-decoration: none;
 }
 
-.project-info {
-    background-color: #f3f2f5;
-    color: #5e5e5e;
-    padding: 10px 15px;
-    border-radius: 0 0 10px 10px;
-    font-size: 16px;
-    line-height: 1.6;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+
+.gallery-item a div {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    color: inherit; 
+    text-decoration: none;
+    width: 100%;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* 비율 유지하면서 꽉 채우기 */
-    transition: transform 0.3s ease-in-out;
     cursor: pointer;
+    border-radius: 10px;
 }
 
-.gallery-item img:hover {
-    transform: scale(1.05);
+
+.gallery-item a div::after{
+  content: ''; 
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 999;
+  transition: 0.3s ease;
+  opacity: 1;
 }
+
+.gallery-item a div:hover::after {
+  opacity: 0.2;
+}
+
+.project-info {
+    position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 10px 15px;
+}
+
+.project-info h3{
+    color: var(--h1-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+
+.project-info p i{
+    margin-right: 8px;
+}
+
 
 
 /* 푸터 */
 footer {
+    height: 100px;
     color: var(--p-color);
     padding: 20px;
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+/* 반응형 */
+@media (max-width: 1110px) {
+    #introduce .container{
+        display: block;
+    }
+
+    .introduce-section{
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .info-section{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .introduce-section{
+        margin-bottom: 30px;
     }
 }
 
 
-/* 반응형: 타블렛(768px 이하)에서 햄버거 메뉴 활성화 */
 @media (max-width: 768px) {
+    .contact-popup{
+        top: 280px;
+        right: 0;
+    }
+
+    .contents-sub-script{
+        width: 100%;
+    }
+
+    .info-area h1, .intro-sub-title h1{
+        font-size: 25px;
+    }
+
+    h3{
+        font-size: 20px;
+    }
+
+    .intro-sub-title span, #projects .project-title span {
+        font-size: 16px;
+    }
+
+    #projects .project-title h2{
+        font-size: 25px;
+    }
+
+    .accordion-header h3{
+        font-size: 25px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
     .menu-toggle {
         display: block; /* 햄버거 버튼 보이기 */
     }
@@ -553,16 +624,19 @@ footer {
     }
 
     .nav-links {
-        display: none; /* 기본적으로 숨김 */
+        opacity: 0;
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 0;
         width: 150px;
         height: 180px;
-        background-color: white;
+        background-color: rgba(255,255,255,0.7);
         text-align: center;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
+        visibility: visible;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links ul {
@@ -576,12 +650,13 @@ footer {
 
     
     .nav-links ul li a {
-        color: #222;
+        color: var(--p-color);
     }
 
     /* 메뉴 활성화 시 표시 */
     .nav-links.active {
-        display: block;
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .container{
