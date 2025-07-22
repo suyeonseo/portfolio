@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // 헤더 내리기/올리기 
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".header");
+  const navLinks = document.querySelector(".nav-links");
   let lastScrollTop = 0;
   let ticking = false;
   const delta = 10;
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 아래로 스크롤하면 숨기기
         if (scrollDown) {
           header.classList.add("hide");
+          navLinks.classList.remove("active");
         }
 
         // 위로 살짝만 올려도 보여주기
@@ -89,6 +90,7 @@ function openImageModal(image, desc) {
             closeImageModal();
         }
     };
+    
 }
 
 
@@ -98,6 +100,7 @@ function closeImageModal() {
     document.getElementById('imageModal').style.display = "none";
 }
 
+// 햄버거 버튼 닫기 및 올리기 
 document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
@@ -122,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 모바일에서 메뉴 클릭 후 자동 닫기
             navLinks.classList.remove("active");
         });
+        
     });
 });
 
