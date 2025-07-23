@@ -11,6 +11,24 @@
     color: #fff;
 }
 
+/* 페이드인 효과로 시작 */
+@keyframes fadeInPage {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      animation: fadeInPage 0.8s ease-in-out;
+    }
+
 /* 기본 스타일 */
 body {
     font-family: 'Arial', sans-serif;
