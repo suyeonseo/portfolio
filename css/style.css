@@ -501,14 +501,12 @@ p.introduce-scripts{
 .gallery-item{
     background: #ffffff;
     position: relative;
-    box-shadow: 0 4px 10px rgba(49, 61, 40, 0.1);
-    padding: 5px;
+    box-shadow: 1px 0 30px rgba(0,0,0,0.08);
     border-radius: 10px;
 }
 
 .gallery-item a{
     display: block;
-    padding: 10px;
     color: inherit; 
     text-decoration: none;
 }
@@ -535,7 +533,7 @@ p.introduce-scripts{
 
 .common-gallery a div{
     position: relative;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
     aspect-ratio: 4 / 3;
     color: inherit; 
@@ -548,7 +546,6 @@ p.introduce-scripts{
     height: 100%;
     object-fit: cover; /* 비율 유지하면서 꽉 채우기 */
     cursor: pointer;
-    border-radius: 10px;
 }
 
 
@@ -562,11 +559,11 @@ p.introduce-scripts{
   pointer-events: none;
   z-index: 999;
   transition: 0.3s ease;
-  opacity: 1;
+  opacity: 0.3;
 }
 
 .gallery-item a div:hover::after {
-  opacity: 0.2;
+  opacity: 0.8;
 }
 
 .project-info {
