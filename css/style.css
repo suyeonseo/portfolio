@@ -203,7 +203,7 @@ header.hide {
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: var(--main-color);
+    background-color: #ff5f5f;
     border-radius: 50%;
     margin-right: 10px;
     text-align: center;
@@ -217,7 +217,7 @@ header.hide {
     margin-top:-10px;
     width: 20px;
     height: 20px;
-    background-color: var(--main-color);
+    background-color: #ff5f5f;
     border-radius: 50%;
     animation: loading 1s linear infinite;
     margin-right: 8px;
@@ -241,7 +241,7 @@ header.hide {
     height: 40px;
     border-radius: 6px;
     padding: 5px;
-    color: var(--main-color);
+    color: #ff7c7c;
     background: #fff;
     text-align: center;
     display: flex;
