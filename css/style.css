@@ -203,7 +203,8 @@ header.hide {
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #ff5f5f;
+    /* background-color: #ff5f5f; */
+    background-color: var(--main-color);
     border-radius: 50%;
     margin-right: 10px;
     text-align: center;
@@ -217,7 +218,8 @@ header.hide {
     margin-top:-10px;
     width: 20px;
     height: 20px;
-    background-color: #ff5f5f;
+    /* background-color: #ff5f5f; */
+    background-color: var(--main-color);
     border-radius: 50%;
     animation: loading 1s linear infinite;
     margin-right: 8px;
@@ -241,7 +243,8 @@ header.hide {
     height: 40px;
     border-radius: 6px;
     padding: 5px;
-    color: #ff7c7c;
+    /* color: #ff7c7c; */
+    color: var(--p-color);
     background: #fff;
     text-align: center;
     display: flex;
@@ -493,100 +496,90 @@ p.introduce-scripts{
 /* 갤러리 그리드 설정 */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 1행 3열 (최소 200px, 최대 1fr) */
+    grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 1행 3열 (최소 200px, 최대 1fr) */
     gap: 15px;
     margin: 15px 5px;
 }
 
 .gallery-item{
-    background: #ffffff;
     position: relative;
     box-shadow: 1px 0 30px rgba(0,0,0,0.08);
     border-radius: 10px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
 }
 
 .gallery-item a{
     display: block;
     color: inherit; 
+    height: 100%;
     text-decoration: none;
 }
 
-
-.poster-gallery a div{
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    color: inherit;
-    text-decoration: none;
-    width: 100%;
-}
-
-.product-gallery a div{
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    color: inherit;
-    text-decoration: none;
-    width: 100%;
-    max-height: 400px;
-}
-
-.common-gallery a div{
-    position: relative;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    color: inherit; 
-    text-decoration: none;
-    width: 100%;
-}
 
 .gallery-item img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 비율 유지하면서 꽉 채우기 */
-    cursor: pointer;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-
-.gallery-item a div::after{
-  content: ''; 
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-  pointer-events: none;
-  z-index: 999;
-  transition: 0.3s ease;
-  opacity: 0.3;
-}
-
-.gallery-item a div:hover::after {
-  opacity: 0.8;
+.gallery-item:hover img {
+    transform: scale(1.05);
 }
 
 .project-info {
-    position: relative;
-    font-size: 16px;
-    line-height: 1.8;
-    padding: 10px 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    color: #fff;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0)
+    );
+
+    box-sizing: border-box;
 }
 
-.project-info h3{
-    color: var(--h1-color);
-    font-weight: 700;
-    margin-bottom: 10px;
+.project-info div{
+    display: flex;
 }
 
+.project-info h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+    word-break: keep-all;
+}
 
-.project-info p i{
-    margin-right: 8px;
-    color: #b2d699;
+.project-info p {
     font-size: 14px;
+    margin-right: 10px;
 }
 
+.project-info i {
+    margin-right: 6px;
+    opacity: 0.6;
+    font-size: 12px;
+}
 
+.img-gallery{
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); 
+}
+
+.img-gallery .gallery-item{
+    height: 400px;
+}
 
 /* 푸터 */
 footer {
@@ -601,9 +594,15 @@ footer {
 @media (max-width: 1110px) {
     .gallery {
         display: grid;
-        grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 1행 3열 (최소 200px, 최대 1fr) */
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 1행 3열 (최소 200px, 최대 1fr) */
         gap: 15px;
         margin: 15px 5px;
+    }
+
+        
+    .project-info div{
+        display: block;
+
     }
 
     #introduce .container{
@@ -661,7 +660,7 @@ footer {
     }
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
 
     .menu-toggle {
